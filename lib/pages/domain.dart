@@ -117,12 +117,56 @@ class DomainPage extends StatelessWidget {
                         onPressed: null,
                       )
                     ],
-                  )
+                  ),
                 ],
               ),
             ),
-            SizedBox(height: 40,)
-            
+            SizedBox(
+              height: 40,
+            ),
+            Expanded(
+              child: GridView.count(
+                crossAxisCount: 2,
+                padding: EdgeInsets.only(left: 14, right: 14),
+                mainAxisSpacing: 7,
+                crossAxisSpacing: 7,
+                children: 
+                  List.generate(
+                    6,
+                    (index) => Container(
+                      decoration: BoxDecoration(
+                          color: Color(0xFF183D3D),
+                          borderRadius: BorderRadius.circular(24)),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Image.asset(
+                              'assets/images/game.png',
+                              fit: BoxFit.cover,
+                              height: 58,
+                              width: 111,
+                            ),
+                            SizedBox(
+                              height: 28,
+                            ),
+                            Text(
+                              "Game Dev",
+                              style: GoogleFonts.hiMelody(
+                                  textStyle: TextStyle(
+                                fontSize: 29,
+                                color: Colors.white,
+                              )),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
+                
+              ),
+            )
           ],
         ),
       ),
