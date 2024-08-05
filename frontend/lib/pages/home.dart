@@ -1,8 +1,8 @@
 import 'package:dev_track_app/pages/domain.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomePag extends StatelessWidget {
+  const HomePag({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +54,8 @@ class HomePage extends StatelessWidget {
               },
               child: Text("Feed Page"),
             ),
+
+            
 
           ],
         ),

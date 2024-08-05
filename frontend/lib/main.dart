@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Dev/Track',
       debugShowCheckedModeBanner: false,
-      home:  HomePage(),
+      home:  HomePag(),
     );
   }
 }
