@@ -1,5 +1,5 @@
 import 'package:dev_track_app/pages/domain.dart';
-import 'package:dev_track_app/pages/specific_project_page/specific_project.dart';
+import 'package:dev_track_app/pages/specific_project.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
