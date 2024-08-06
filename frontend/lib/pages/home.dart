@@ -3,9 +3,13 @@ import 'package:dev_track_app/pages/splashscreen.dart';
 
 import 'package:dev_track_app/pages/confirm_page.dart';
 import 'package:dev_track_app/pages/domain.dart';
+
+import 'package:dev_track_app/pages/specific_project.dart';
+
 import 'package:dev_track_app/pages/home_page.dart';
 import 'package:dev_track_app/pages/login_page.dart';
 import 'package:dev_track_app/pages/register_page.dart';
+
 import 'package:flutter/material.dart';
 
 class HomePag extends StatelessWidget {
@@ -94,19 +98,25 @@ class HomePag extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30.0), // Rounded corners
                 ),
+
+
                 padding: EdgeInsets.symmetric(
                     horizontal: 20, vertical: 15), // Padding inside the button
+
                 textStyle: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ConfirmPage()));
+
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => SpecificProject()));
               },
-              child: Text("Confirm Page"),
+              child: Text("Specific Project"),
             ),
+
+
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color.fromARGB(255, 50, 7, 120),
@@ -128,6 +138,7 @@ class HomePag extends StatelessWidget {
               },
               child: Text("SplashScreen"),
             )
+
           ],
         ),
       ),
