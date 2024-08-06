@@ -1,5 +1,4 @@
-import 'dart:convert';
-
+import 'package:dev_track_app/components/bottomNav.dart';
 import 'package:dev_track_app/pages/splashscreen.dart';
 import 'package:dev_track_app/pages/domain.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +35,28 @@ class HomePage extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => DomainPage()));
               },
               child: Text("Domain Page"),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 39, 94, 176),
+                foregroundColor: Colors.white,
+                shadowColor: Colors.blueAccent, // Shadow color
+                elevation: 5, // Elevation of the button
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0), // Rounded corners
+                ),
+                padding: EdgeInsets.symmetric(
+                    horizontal: 20, vertical: 15), // Padding inside the button
+                textStyle: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => BottomNav()));
+              },
+              child: Text("Bottom Nav"),
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
