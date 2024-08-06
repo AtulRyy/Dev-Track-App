@@ -1,8 +1,12 @@
+import 'package:dev_track_app/pages/confirm_page.dart';
 import 'package:dev_track_app/pages/domain.dart';
+import 'package:dev_track_app/pages/home_page.dart';
+import 'package:dev_track_app/pages/login_page.dart';
+import 'package:dev_track_app/pages/register_page.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomePag extends StatelessWidget {
+  const HomePag({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +16,27 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+               backgroundColor: Colors.green,
+               foregroundColor: Colors.white,
+                shadowColor: Colors.blueAccent, // Shadow color
+                elevation: 5, // Elevation of the button
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0), // Rounded corners
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15), // Padding inside the button
+                textStyle: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => HomePage()));
+              },
+              child: Text("Home Page"),
+            ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                backgroundColor: Colors.purple,
@@ -33,7 +58,10 @@ class HomePage extends StatelessWidget {
               },
               child: Text("Domain Page"),
             ),
-            ElevatedButton(
+            
+            
+            
+ ElevatedButton(
               style: ElevatedButton.styleFrom(
                backgroundColor: Colors.deepOrange,
                foregroundColor: Colors.white,
@@ -50,11 +78,10 @@ class HomePage extends StatelessWidget {
               ),
               onPressed: () {
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => DomainPage()));
+                    context, MaterialPageRoute(builder: (context) => ConfirmPage()));
               },
-              child: Text("Feed Page"),
+              child: Text("Confirm Page"),
             ),
-
           ],
         ),
       ),
