@@ -1,8 +1,7 @@
-
 import 'package:dev_track_app/components/bottomNav.dart';
 import 'package:dev_track_app/pages/splashscreen.dart';
 
-import 'package:dev_track_app/pages/confirm_page.dart
+import 'package:dev_track_app/pages/confirm_page.dart';
 import 'package:dev_track_app/pages/domain.dart';
 import 'package:dev_track_app/pages/home_page.dart';
 import 'package:dev_track_app/pages/login_page.dart';
@@ -20,24 +19,25 @@ class HomePag extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-             ElevatedButton(
+            ElevatedButton(
               style: ElevatedButton.styleFrom(
-               backgroundColor: Colors.green,
-               foregroundColor: Colors.white,
+                backgroundColor: Colors.green,
+                foregroundColor: Colors.white,
                 shadowColor: Colors.blueAccent, // Shadow color
                 elevation: 5, // Elevation of the button
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30.0), // Rounded corners
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15), // Padding inside the button
+                padding: EdgeInsets.symmetric(
+                    horizontal: 20, vertical: 15), // Padding inside the button
                 textStyle: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               onPressed: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => HomePage()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => HomePage()));
               },
               child: Text("Home Page"),
             ),
@@ -63,10 +63,7 @@ class HomePag extends StatelessWidget {
               },
               child: Text("Domain Page"),
             ),
-            
-            
-            
- ElevatedButton(
+            ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromARGB(255, 39, 94, 176),
                 foregroundColor: Colors.white,
@@ -83,7 +80,6 @@ class HomePag extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => BottomNav()));
               },
@@ -107,12 +103,10 @@ class HomePag extends StatelessWidget {
               ),
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => DomainPage()));
-
+                    MaterialPageRoute(builder: (context) => ConfirmPage()));
               },
               child: Text("Confirm Page"),
             ),
-
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color.fromARGB(255, 50, 7, 120),
@@ -134,7 +128,6 @@ class HomePag extends StatelessWidget {
               },
               child: Text("SplashScreen"),
             )
-
           ],
         ),
       ),
