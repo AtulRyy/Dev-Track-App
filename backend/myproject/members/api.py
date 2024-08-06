@@ -1,38 +1,39 @@
 from ninja import NinjaAPI
-from ninja.security import django_auth
 from django.contrib.auth import authenticate, login, logout
-from django.middleware.csrf import get_token
 from .models import CustomUser as User
 from . import schemas
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
+from ninja_jwt.controller import NinjaJWTDefaultController
+from ninja_jwt.authentication import JWTAuth
+from ninja_jwt.tokens import RefreshToken
+from ninja_extra import NinjaExtraAPI
 
 
+api = NinjaExtraAPI(csrf=False)
+api.register_controllers(NinjaJWTDefaultController)
 
-api = NinjaAPI(csrf=True)
-
-
-@api.get("/set-csrf-token")
-def get_csrf_token(request):
-    return {"csrftoken": get_token(request)}
 
 
 @api.post("/login")
 def login_view(request, payload: schemas.SignInSchema):
     user = authenticate(request, username=payload.email, password=payload.password)
     if user is not None:
-        login(request, user)
-        return {"success": True}
-    return {"success": False, "message": "Invalid credentials"}
+        refresh= RefreshToken.for_user(user)
+        return {
+            'refresh': str(refresh),
+            'access': str(refresh.access_token)
+        }
+    return JsonResponse({"detail": "Invalid credentials"}, status=401)
 
 
-@api.post("/logout", auth=django_auth)
+@api.post("/logout", auth=JWTAuth())
 def logout_view(request):
     logout(request)
     return {"message": "Logged out"}
 
 
-@api.get("/user", auth=django_auth,)
+@api.get("/user", auth=JWTAuth())
 def user(request):
     return {
         "username": request.user.username,
@@ -53,12 +54,17 @@ def register(request, payload: schemas.RegisterSchema):
             first_name= payload.first_name,
             last_name= payload.last_name,
         )
-        return JsonResponse({"success": "User registered successfully"}, status=201)
+        refresh = RefreshToken.for_user(user)
+        return {
+            "refresh": str(refresh),
+            "access": str(refresh.access_token),
+        }
     except Exception as e:
         return JsonResponse({"error": str(e)}, status=400)
+    
+    
 
-
-@api.put("/edit",auth=django_auth ,response=schemas.RegisterSchema)
+@api.put("/edit", auth=JWTAuth() ,response=schemas.RegisterSchema)
 def edit_profile(request, payload : schemas.RegisterSchema):
     user= get_object_or_404(User, srn=request.user.srn)
     for attr, value in payload.dict().items():
@@ -66,3 +72,4 @@ def edit_profile(request, payload : schemas.RegisterSchema):
     user.save()
     return user
     
+

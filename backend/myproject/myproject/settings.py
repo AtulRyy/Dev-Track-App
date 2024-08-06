@@ -31,6 +31,23 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+from datetime import timedelta
+#Django-ninja jwt settings
+NINJA_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY,
+    'VERIFYING_KEY': None,
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
+}
+
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,9 +57,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myapp',
+    'members',
     'ninja',
     'corsheaders',
+    'ninja_jwt',
 ]
 
 MIDDLEWARE = [
@@ -126,7 +144,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-# STATIC_URL = 'static/'
+STATIC_URL = 'static/'
 # STATIC_ROOT= os.path.join(BASE_DIR, 'staticfiles')
 # STATICFILES_DIRS= (os.path.join(BASE_DIR, 'static'),)
 # django_heroku.settings(locals())
@@ -142,6 +160,6 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = ["http://localhost:8000"] 
 CSRF_TRUSTED_ORIGINS = ['http://localhost:8000']
 
-AUTH_USER_MODEL = 'myapp.CustomUser'
+AUTH_USER_MODEL = 'members.CustomUser'
 
 
