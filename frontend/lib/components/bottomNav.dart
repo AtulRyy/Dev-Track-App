@@ -13,7 +13,7 @@ class BottomNav extends StatefulWidget {
 class _BottomNavState extends State<BottomNav> {
   int _currentIndex = 0;
   final List<Widget> pages = [
-    const HomePage(),
+    const HomePag(),
     // const ScrumPage(),
     const DomainPage(),
     // const ProgressPage(),
