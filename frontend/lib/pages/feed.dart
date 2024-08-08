@@ -3,10 +3,6 @@ import 'package:dev_track_app/components/post.dart';
 import 'package:dev_track_app/components/topNav.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
-import 'package:dev_track_app/components/post.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class FeedPage extends StatefulWidget {
@@ -17,31 +13,42 @@ class FeedPage extends StatefulWidget {
 }
 
 class _FeedPageState extends State<FeedPage> {
-  List<Data> post=[
-    Data(caption: 'Jackets are here!!!', username: 'AtulReny', content: 'Come and collect em today hehehehehe')
+  List<Data> posts = [
+    Data(
+      caption: 'Jackets are here!!!',
+      username: 'AtulReny',
+      content: 'Come and collect em today hehehehehe',
+    ),
+    // Add more Data objects here as needed
   ];
+  void _updateState() {
+    setState(() {});
+  }
+
+  void _deleteState() {
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0xFF040D12),
-        body: ListView(
-          scrollDirection: Axis.vertical,
+        body: Column(
           children: [
-            TopNav(),
-                SizedBox(height: 15),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: post.map((datalist)=> CardTemplate(datalist)).toList(),
+            TopNav(), // Add the top navigation bar
+            SizedBox(height: 15),
+            Expanded(
+              child: ListView.builder(
+                itemCount: posts.length,
+                itemBuilder: (context, index) {
+                  return CardTemplate(posts, index, context, _updateState, _deleteState);
+                },
+              ),
             ),
-            SizedBox(height: 10),
-
           ],
-              )
-
-        )
-
-
+        ),
+      ),
     );
   }
 }

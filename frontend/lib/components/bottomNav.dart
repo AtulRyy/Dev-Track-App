@@ -1,3 +1,4 @@
+import 'package:dev_track_app/pages/feed.dart';
 import 'package:flutter/material.dart';
 
 import 'package:dev_track_app/pages/domain.dart';
@@ -14,6 +15,7 @@ class _BottomNavState extends State<BottomNav> {
   int _currentIndex = 0;
   final List<Widget> pages = [
     const HomePag(),
+    const FeedPage(),
     // const ScrumPage(),
     const DomainPage(),
     // const ProgressPage(),
