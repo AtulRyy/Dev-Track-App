@@ -1,3 +1,4 @@
+import 'package:dev_track_app/pages/feed.dart';
 import 'package:flutter/material.dart';
 
 import 'package:dev_track_app/pages/home.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
       ),
       debugShowCheckedModeBanner: false,
-      home: const HomePag(),
+      home: const FeedPage()
     );
   }
 }
