@@ -1,4 +1,5 @@
 import 'package:dev_track_app/components/bottomNav.dart';
+import 'package:dev_track_app/pages/previous_projects.dart';
 import 'package:dev_track_app/pages/splashscreen.dart';
 import 'package:dev_track_app/pages/confirm_page.dart';
 import 'package:dev_track_app/pages/domain.dart';
@@ -127,9 +128,9 @@ class HomePag extends StatelessWidget {
               onPressed: () {
 
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => SpecificProject()));
+                    context, MaterialPageRoute(builder: (context) => PreviousProjects()));
               },
-              child: Text("Specific Project"),
+              child: Text("Previous Projects"),
             ),
 
 
