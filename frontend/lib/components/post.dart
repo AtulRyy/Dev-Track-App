@@ -42,8 +42,10 @@ Widget CardTemplate(List<Data> datalist, int index, BuildContext contextt,
               style: TextStyle(color: Color(0xFF93B1A6)),
             ),
             trailing: Container(
-              width: 20,
+              width: 30,
               child: PopupMenuButton<int>(
+                offset: Offset(0, 40),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                 itemBuilder: (context) => [
                   PopupMenuItem(
                       child: Row(
@@ -59,9 +61,6 @@ Widget CardTemplate(List<Data> datalist, int index, BuildContext contextt,
                         ],
                       ),
                       onTap: () {
-                        Future.delayed(
-                          Duration.zero,
-                          () {
                             showDialog(
                               context: contextt,
                               builder: (BuildContext context) {
@@ -135,8 +134,6 @@ Widget CardTemplate(List<Data> datalist, int index, BuildContext contextt,
                                 );
                               },
                             );
-                          },
-                        );
                       }),
                   PopupMenuItem(
                     child: Row(
