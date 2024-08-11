@@ -127,7 +127,7 @@ Widget CardTemplate(List<Data> datalist, int index, BuildContext context, Functi
               ),
             ),
           ),
-          SizedBox(height: 5),
+          // SizedBox(height: 5),
           Expanded(
             child: Container(
               width: double.infinity,
