@@ -42,7 +42,7 @@ Widget CardTemplate(List<Data> datalist, int index, BuildContext contextt,
               style: TextStyle(color: Color(0xFF93B1A6)),
             ),
             trailing: Container(
-              width: 70,
+              width: 20,
               child: PopupMenuButton<int>(
                 itemBuilder: (context) => [
                   PopupMenuItem(
