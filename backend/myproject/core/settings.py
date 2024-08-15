@@ -51,7 +51,7 @@ NINJA_JWT = {
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    # 'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -61,6 +61,10 @@ INSTALLED_APPS = [
     'ninja',
     'corsheaders',
     'ninja_jwt',
+    'ninja_extra',
+    'projects',
+    'announcements',
+    'registrations',
 ]
 
 MIDDLEWARE = [
