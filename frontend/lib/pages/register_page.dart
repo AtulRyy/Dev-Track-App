@@ -197,7 +197,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   _isChecked = value ?? false;
                                 });
                               },
-                              fillColor: MaterialStateProperty.all<Color>(
+                              fillColor: WidgetStateProperty.all<Color>(
                                   const Color.fromARGB(255, 53, 156, 19)),
                             ),
                             const Expanded(
@@ -239,25 +239,6 @@ class _RegisterPageState extends State<RegisterPage> {
                 ],
               ),
             ),
-          ),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.grey[850],
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.grey,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
           ),
         ],
       ),

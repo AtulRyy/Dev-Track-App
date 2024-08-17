@@ -6,6 +6,8 @@ import 'package:dev_track_app/pages/specific_project.dart';
 import 'package:dev_track_app/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dev_track_app/pages/tracker.dart';
+import 'package:dev_track_app/pages/scrum_meet.dart';
+import 'package:dev_track_app/pages/scrumstud.dart';
 
 class HomePag extends StatelessWidget {
   const HomePag({super.key});
@@ -172,6 +174,50 @@ class HomePag extends StatelessWidget {
                         builder: (context) => ProgressTrackerPage()));
               },
               child: const Text("Tracker Page"),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 151, 214, 15),
+                foregroundColor: Colors.white,
+                shadowColor: const Color.fromARGB(255, 0, 0, 0),
+                elevation: 5,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                textStyle: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ScrumMeetPage()));
+              },
+              child: const Text("Scrum Meet Page"),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 122, 6, 58),
+                foregroundColor: Colors.white,
+                shadowColor: const Color.fromARGB(255, 0, 0, 0),
+                elevation: 5,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                textStyle: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => StudentMeetPage()));
+              },
+              child: const Text("Studscrum page"),
             ),
           ],
         ),
