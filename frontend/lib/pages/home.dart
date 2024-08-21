@@ -124,14 +124,14 @@ class HomePag extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-<<<<<<< HEAD
+
 
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => PreviousProjects()));
-=======
+
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => SpecificProject()));
->>>>>>> f5695841643b6f5e73ce5522670d31b659cdebd2
+
               },
               child: Text("Previous Projects"),
             ),
