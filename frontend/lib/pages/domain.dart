@@ -126,12 +126,11 @@ class DomainPage extends StatelessWidget {
             ),
             Expanded(
               child: GridView.count(
-                crossAxisCount: 2,
-                padding: EdgeInsets.only(left: 14, right: 14),
-                mainAxisSpacing: 7,
-                crossAxisSpacing: 7,
-                children: 
-                  List.generate(
+                  crossAxisCount: 2,
+                  padding: EdgeInsets.only(left: 14, right: 14),
+                  mainAxisSpacing: 7,
+                  crossAxisSpacing: 7,
+                  children: List.generate(
                     6,
                     (index) => Container(
                       decoration: BoxDecoration(
@@ -163,9 +162,7 @@ class DomainPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                  )
-                
-              ),
+                  )),
             )
           ],
         ),
