@@ -26,8 +26,8 @@ class ProjectModel(models.Model):
 
     name = models.CharField(max_length= 64)
     description = models.TextField(max_length= 256)
-    github_link = models.URLField(blank=False, null=True, blank=True)
-    youtube_link = models.URLField(blank=True, null =True, blank=True)
+    github_link = models.URLField(null=True, blank=True)
+    youtube_link = models.URLField(null =True, blank=True)
     status = models.CharField(choices=STATUS_ROLES)
     created_at = models.DateTimeField(auto_now_add= True)
     team = models.ForeignKey(TeamModel,on_delete=models.CASCADE)
