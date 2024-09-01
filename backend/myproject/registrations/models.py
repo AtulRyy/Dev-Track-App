@@ -1,30 +1,20 @@
 from django.db import models
 from members.models import CustomUser
-from projects.models import DomainModel
+from projects.models import DomainModel, ProjectCycleModel, TeamModel
 # Create your models here.
 
 
-class ApplicationsModel(models.Model):
+class ProjectApplicationModel(models.Model):
 
-    name  = models.CharField(max_length = 64)
-    srn   = models.CharField(max_length=8)
-    phone = models.IntegerField(max_length=10)
-    project = models.URLField(blank=True, null=True)
-    course = models.CharField(max_length=16)
-    semester = models.IntegerField(max_length=2)
-    first_preference = models.CharField()
-    second_preference = models.CharField()
-    linkedin_url = models.URLField(blank=True,null=True)
-    github_url = models.URLField(blank=True,null=True)
-    email_address =models.URLField(null=False)
-    submitted_at = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    cycle = models.ForeignKey(ProjectCycleModel, on_delete=models.CASCADE)
+    first_preference = models.ForeignKey(DomainModel, related_name="first_pref", on_delete=models.CASCADE)
+    second_preference = models.ForeignKey(DomainModel, related_name="second_pref", on_delete=models.CASCADE)
+    application_date = models.DateTimeField(auto_now_add=True)
+    is_selected = models.BooleanField()
+    selected_team = models.ForeignKey(TeamModel, on_delete=models.SET_NULL, null=True, blank=True)
 
 
-
-
-# class ProjectCycleApplications(models.Model):
-#     domain = models.ForeignKey(DomainModel)
-#     user = models.ForeignKey(CustomUser)
 
 
 

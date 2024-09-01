@@ -3,8 +3,6 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from pydantic import ValidationError
 
-#Model imports
-from projects.models import ProjectModel, SubmissionModel 
 
 # Todo list 
 # - Manage passwords, search how to do that
@@ -28,36 +26,37 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.email
 
+from django.db import models
+from django.core.exceptions import ValidationError
+from members.models import CustomUser
 
-#Table to upload all types of files : PDF, Images, Links
 class FileModel(models.Model):
     PDF = "PD"
     IMAGE = "IM"
     LINK = "LI"
 
     FILE_TYPE = [
-        (PDF,"pdf"),
-        (IMAGE,"image"),
-        (LINK,"link"),
+        (PDF, "pdf"),
+        (IMAGE, "image"),
+        (LINK, "link"),
     ]
 
-    name = models.CharField(max_length=200,unique=True)
+    name = models.CharField(max_length=200, unique=True)
     type = models.CharField(max_length=2, choices=FILE_TYPE)
     file = models.FileField(upload_to='files/', null=True, blank=True) 
     image = models.ImageField(upload_to='images/', null=True, blank=True)  
     url = models.URLField(max_length=500, null=True, blank=True)  
     uploaded_at = models.DateTimeField(auto_now_add=True, db_index=True)
-    uploaded_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True)
-    related_project = models.ForeignKey(ProjectModel,on_delete=models.CASCADE, null=True, blank=True)
-    related_submission = models.ForeignKey(SubmissionModel, on_delete=models.CASCADE,null=True, blank=True)
-    related_user = models.ForeignKey(CustomUser, on_delete=models.CASCADE,null=True, blank=True)
-
+    uploaded_by = models.ForeignKey(CustomUser, related_name="uploaded_files", on_delete=models.CASCADE, null=True, blank=True)
+    related_project = models.ForeignKey('projects.ProjectModel', on_delete=models.CASCADE, null=True, blank=True)
+    related_submission = models.ForeignKey('projects.SubmissionModel', on_delete=models.CASCADE, null=True, blank=True)
+    related_user = models.ForeignKey(CustomUser, related_name="related_files", on_delete=models.CASCADE, null=True, blank=True)
 
     def clean(self):
         # Validate that the correct file type is provided
-        if self.type == self.PDF and not self.file.name.endswith('.pdf'):
+        if self.type == self.PDF and not (self.file and self.file.name.endswith('.pdf')):
             raise ValidationError('File must be a PDF.')
-        elif self.type == self.IMAGE and not self.image.name.endswith(('.jpg', '.jpeg', '.png', '.gif')):
+        elif self.type == self.IMAGE and not (self.image and self.image.name.endswith(('.jpg', '.jpeg', '.png', '.gif'))):
             raise ValidationError('Image must be a valid image file.')
         elif self.type == self.LINK and not self.url:
             raise ValidationError('URL must be provided for a link type.')
