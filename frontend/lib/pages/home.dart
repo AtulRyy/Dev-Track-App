@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:dev_track_app/pages/tracker.dart';
 import 'package:dev_track_app/pages/scrum_meet.dart';
 import 'package:dev_track_app/pages/scrumstud.dart';
+import 'package:dev_track_app/pages/preference.dart';
 
 class HomePag extends StatelessWidget {
   const HomePag({super.key});
@@ -196,6 +197,28 @@ class HomePag extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => ScrumMeetPage()));
               },
               child: const Text("Scrum Meet Page"),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 73, 3, 4),
+                foregroundColor: Colors.white,
+                shadowColor: const Color.fromARGB(255, 0, 0, 0),
+                elevation: 5,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                textStyle: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => DevtrackApp()));
+              },
+              child: const Text("Preference Page"),
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
