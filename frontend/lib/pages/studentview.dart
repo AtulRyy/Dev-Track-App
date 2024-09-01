@@ -23,10 +23,18 @@ class _StudentviewState extends State<Studentview> {
   String _aboutText =
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac vestibulum erat. In elementum, dui non condimentum bibendum, purus magna viverra erat, nec elementum odio magna in risus.';
 
+  // Placeholders for Ninja APIs
+  String _name = ''; // Placeholder for name
+  String _srn = ''; // Placeholder for SRN
+  String _designation = ''; // Placeholder for designation
+  String _profilePictureUrl = ''; // Placeholder for profile picture URL
+  String _coverPictureUrl = ''; // Placeholder for cover picture URL
+
   @override
   void initState() {
     super.initState();
     _loadAboutInfo();
+    _fetchMemberData(); // Fetch data from Ninja APIs or local storage
   }
 
   Future<void> _loadAboutInfo() async {
@@ -89,14 +97,31 @@ class _StudentviewState extends State<Studentview> {
     }
   }
 
+  Future<void> _fetchMemberData() async {
+    // This function will fetch data from Ninja APIs or local storage
+    // Example placeholders (replace these with actual API calls)
+    setState(() {
+      _name = 'John Doe'; // Replace with API data
+      _srn = 'SRN123456'; // Replace with API data
+      _designation = 'Member'; // Replace with API data
+      _profilePictureUrl = ''; // Replace with API data
+      _coverPictureUrl = ''; // Replace with API data
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    // Get the height of the keyboard
+    final keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
+
     return Scaffold(
-      body: Column(
-        children: [
-          buildTop(),
-          buildContent(),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            buildTop(),
+            buildContent(),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _showEditOptions,
@@ -127,52 +152,53 @@ class _StudentviewState extends State<Studentview> {
   }
 
   Widget buildContent() {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(height: spacing), // Adjusted spacing
-          Text(
-            'Austrian Painter', // name
-            style: GoogleFonts.poppins(
-              fontSize: 38.0,
-              fontWeight: FontWeight.bold,
-            ),
+  return Padding(
+    padding: const EdgeInsets.all(16.0),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start, // Aligns all children to the left
+      children: [
+        SizedBox(height: spacing), // Adjusted spacing
+        Text(
+          _name, // Name from API
+          style: GoogleFonts.poppins(
+            fontSize: 38.0,
+            fontWeight: FontWeight.bold,
           ),
-          SizedBox(height: 8.0),
-          Text(
-            'SRN: 1945', // SRN
-            style: GoogleFonts.poppins(
-              fontSize: 20.0,
-            ),
+        ),
+        SizedBox(height: 8.0),
+        Text(
+          'SRN: $_srn', // SRN from API
+          style: GoogleFonts.poppins(
+            fontSize: 20.0,
           ),
-          SizedBox(height: 16.0),
-          Text(
-            'Member/Core', // designation
-            style: GoogleFonts.poppins(
-              fontSize: 18.0,
-            ),
+        ),
+        SizedBox(height: 16.0),
+        Text(
+          _designation, // Designation from API
+          style: GoogleFonts.poppins(
+            fontSize: 18.0,
           ),
-          SizedBox(height: 16.0),
-          Text(
-            'About',
-            style: GoogleFonts.poppins(
-              fontSize: 18.0, // Font size for "About" label
-              fontWeight: FontWeight.bold,
-            ),
+        ),
+        SizedBox(height: 16.0),
+        Text(
+          'About',
+          style: GoogleFonts.poppins(
+            fontSize: 18.0, // Font size for "About" label
+            fontWeight: FontWeight.bold,
           ),
-          SizedBox(height: 8.0),
-          Text(
-            _aboutText,
-            style: GoogleFonts.poppins(
-              fontSize: 16.0, // Font size for the content
-            ),
+        ),
+        SizedBox(height: 8.0),
+        Text(
+          _aboutText,
+          style: GoogleFonts.poppins(
+            fontSize: 16.0, // Font size for the content
           ),
-        ],
-      ),
-    );
-  }
+        ),
+      ],
+    ),
+  );
+}
+
 
   Widget buildCoverImage() => Container(
         color: Colors.grey,
@@ -184,7 +210,9 @@ class _StudentviewState extends State<Studentview> {
                 fit: BoxFit.cover,
               )
             : Image.network(
-                "https://img.freepik.com/free-photo/abstract-blur-empty-green-gradient-studio-well-use-as-background-website-template-frame-business-report_1258-52910.jpg",
+                _coverPictureUrl.isNotEmpty
+                    ? _coverPictureUrl
+                    : "https://img.freepik.com/free-photo/abstract-blur-empty-green-gradient-studio-well-use-as-background-website-template-frame-business-report_1258-52910.jpg",
                 width: double.infinity,
                 height: coverHeight,
                 fit: BoxFit.cover,
@@ -196,8 +224,10 @@ class _StudentviewState extends State<Studentview> {
         backgroundColor: Colors.grey.shade800,
         backgroundImage: _profileImage != null
             ? MemoryImage(_profileImage!) // Use the selected image
-            : AssetImage("assets/images/user.png")
-                as ImageProvider, // Use the default image
+            : _profilePictureUrl.isNotEmpty
+                ? NetworkImage(_profilePictureUrl)
+                : AssetImage("assets/images/user.png")
+                    as ImageProvider, // Use the default image
       );
 
   void _showEditOptions() {
