@@ -1,4 +1,6 @@
 import 'package:dev_track_app/components/bottomNav.dart';
+import 'package:dev_track_app/pages/mgmt_previous_projects/mgmg_prev_projects.dart';
+import 'package:dev_track_app/pages/previous_projects.dart';
 import 'package:dev_track_app/pages/splashscreen.dart';
 import 'package:dev_track_app/pages/confirm_page.dart';
 import 'package:dev_track_app/pages/domain.dart';
@@ -123,10 +125,16 @@ class HomePag extends StatelessWidget {
                 ),
               ),
               onPressed: () {
+
+
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => PreviousProjects()));
+
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => SpecificProject()));
+
               },
-              child: Text("Specific Project"),
+              child: Text("Previous Projects"),
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -173,6 +181,31 @@ class HomePag extends StatelessWidget {
               },
               child: const Text("Tracker Page"),
             ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.teal,
+                foregroundColor: Colors.white,
+                shadowColor: Colors.blueAccent,
+                elevation: 5,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+                padding:
+                const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                textStyle: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>MgmtPreviousProjects()));
+              },
+              child: const Text("Management Project View Page"),
+            ),
+
           ],
         ),
       ),
