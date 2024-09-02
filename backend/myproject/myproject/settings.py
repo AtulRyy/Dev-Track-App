@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 # import django_heroku
 # import dj_database_url
@@ -51,7 +51,7 @@ NINJA_JWT = {
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    # 'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -61,6 +61,10 @@ INSTALLED_APPS = [
     'ninja',
     'corsheaders',
     'ninja_jwt',
+    'ninja_extra',
+    'projects',
+    'announcements',
+    'registrations',
 ]
 
 MIDDLEWARE = [
@@ -163,3 +167,5 @@ CSRF_TRUSTED_ORIGINS = ['http://localhost:8000']
 AUTH_USER_MODEL = 'members.CustomUser'
 
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
