@@ -8,6 +8,7 @@ import 'package:dev_track_app/pages/specific_project.dart';
 import 'package:dev_track_app/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dev_track_app/pages/tracker.dart';
+import 'package:dev_track_app/pages/submission_page.dart';
 
 class HomePag extends StatelessWidget {
   const HomePag({super.key});
@@ -88,6 +89,28 @@ class HomePag extends StatelessWidget {
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 39, 94, 176),
+                foregroundColor: Colors.white,
+                shadowColor: Colors.blueAccent, // Shadow color
+                elevation: 5, // Elevation of the button
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0), // Rounded corners
+                ),
+                padding: EdgeInsets.symmetric(
+                    horizontal: 20, vertical: 15), // Padding inside the button
+                textStyle: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SubmissionPage()));
+              },
+              child: Text("Submission Page"),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.amber,
                 foregroundColor: Colors.white,
                 shadowColor: Colors.blueAccent,
@@ -120,15 +143,19 @@ class HomePag extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                 textStyle: const TextStyle(
+
+                padding: EdgeInsets.symmetric(
+                    horizontal: 20, vertical: 15), // Padding inside the button
+
+                textStyle: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               onPressed: () {
 
-
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => PreviousProjects()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => PreviousProjects()));
 
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => SpecificProject()));
@@ -205,7 +232,6 @@ class HomePag extends StatelessWidget {
               },
               child: const Text("Management Project View Page"),
             ),
-
           ],
         ),
       ),
