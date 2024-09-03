@@ -5,6 +5,7 @@ import 'package:dev_track_app/pages/domain.dart';
 import 'package:dev_track_app/pages/specific_project.dart';
 import 'package:dev_track_app/pages/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:dev_track_app/pages/studentview.dart';
 import 'package:dev_track_app/pages/tracker.dart';
 
 class HomePag extends StatelessWidget {
@@ -172,6 +173,27 @@ class HomePag extends StatelessWidget {
                         builder: (context) => ProgressTrackerPage()));
               },
               child: const Text("Tracker Page"),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color.fromARGB(255, 50, 7, 120),
+                foregroundColor: Color.fromARGB(255, 242, 244, 244),
+                shadowColor: Colors.black12,
+                elevation: 5,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                textStyle: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Studentview()));
+              },
+              child: Text("Student View"),
             ),
           ],
         ),
