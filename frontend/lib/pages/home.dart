@@ -5,6 +5,7 @@ import 'package:dev_track_app/pages/domain.dart';
 import 'package:dev_track_app/pages/specific_project.dart';
 import 'package:dev_track_app/pages/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:dev_track_app/pages/tracker.dart';
 
 class HomePag extends StatelessWidget {
   const HomePag({super.key});
@@ -21,14 +22,14 @@ class HomePag extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green,
                 foregroundColor: Colors.white,
-                shadowColor: Colors.blueAccent, // Shadow color
-                elevation: 5, // Elevation of the button
+                shadowColor: Colors.blueAccent,
+                elevation: 5,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0), // Rounded corners
+                  borderRadius: BorderRadius.circular(30.0),
                 ),
-                padding: EdgeInsets.symmetric(
-                    horizontal: 20, vertical: 15), // Padding inside the button
-                textStyle: TextStyle(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                textStyle: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
@@ -43,14 +44,14 @@ class HomePag extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.purple,
                 foregroundColor: Colors.white,
-                shadowColor: Colors.blueAccent, // Shadow color
-                elevation: 5, // Elevation of the button
+                shadowColor: Colors.blueAccent,
+                elevation: 5,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0), // Rounded corners
+                  borderRadius: BorderRadius.circular(30.0),
                 ),
-                padding: EdgeInsets.symmetric(
-                    horizontal: 20, vertical: 15), // Padding inside the button
-                textStyle: TextStyle(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                textStyle: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
@@ -65,14 +66,14 @@ class HomePag extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromARGB(255, 39, 94, 176),
                 foregroundColor: Colors.white,
-                shadowColor: Colors.blueAccent, // Shadow color
-                elevation: 5, // Elevation of the button
+                shadowColor: Colors.blueAccent,
+                elevation: 5,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0), // Rounded corners
+                  borderRadius: BorderRadius.circular(30.0),
                 ),
-                padding: EdgeInsets.symmetric(
-                    horizontal: 20, vertical: 15), // Padding inside the button
-                textStyle: TextStyle(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                textStyle: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
@@ -87,14 +88,14 @@ class HomePag extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.amber,
                 foregroundColor: Colors.white,
-                shadowColor: Colors.blueAccent, // Shadow color
-                elevation: 5, // Elevation of the button
+                shadowColor: Colors.blueAccent,
+                elevation: 5,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0), // Rounded corners
+                  borderRadius: BorderRadius.circular(30.0),
                 ),
-                padding: EdgeInsets.symmetric(
-                    horizontal: 20, vertical: 15), // Padding inside the button
-                textStyle: TextStyle(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                textStyle: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
@@ -103,36 +104,30 @@ class HomePag extends StatelessWidget {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => ConfirmPage()));
               },
-              child: Text("Confirm"),
+              child: const Text("Confirm"),
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.deepOrange,
                 foregroundColor: Colors.white,
-                shadowColor: Colors.blueAccent, // Shadow color
-                elevation: 5, // Elevation of the button
+                shadowColor: Colors.blueAccent,
+                elevation: 5,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0), // Rounded corners
+                  borderRadius: BorderRadius.circular(30.0),
                 ),
-
-
-                padding: EdgeInsets.symmetric(
-                    horizontal: 20, vertical: 15), // Padding inside the button
-
-                textStyle: TextStyle(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                textStyle: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               onPressed: () {
-
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => SpecificProject()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SpecificProject()));
               },
               child: Text("Specific Project"),
             ),
-
-
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color.fromARGB(255, 50, 7, 120),
@@ -143,7 +138,7 @@ class HomePag extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30.0),
                 ),
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                textStyle: TextStyle(
+                textStyle: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
@@ -152,9 +147,32 @@ class HomePag extends StatelessWidget {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (context) => Splash()));
               },
-              child: Text("SplashScreen"),
-            )
-
+              child: const Text("SplashScreen"),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.teal,
+                foregroundColor: Colors.white,
+                shadowColor: Colors.blueAccent,
+                elevation: 5,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                textStyle: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ProgressTrackerPage()));
+              },
+              child: const Text("Tracker Page"),
+            ),
           ],
         ),
       ),
