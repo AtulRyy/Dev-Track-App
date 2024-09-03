@@ -126,6 +126,8 @@ class HomePag extends StatelessWidget {
               onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => SpecificProject()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SpecificProject()));
               },
               child: Text("Specific Project"),
             ),
