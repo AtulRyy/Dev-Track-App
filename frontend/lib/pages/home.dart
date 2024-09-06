@@ -8,6 +8,7 @@ import 'package:dev_track_app/pages/specific_project.dart';
 import 'package:dev_track_app/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dev_track_app/pages/tracker.dart';
+import 'package:dev_track_app/pages/studentview.dart';
 
 class HomePag extends StatelessWidget {
   const HomePag({super.key});
@@ -125,14 +126,13 @@ class HomePag extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-
-
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => PreviousProjects()));
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => PreviousProjects()));
 
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => SpecificProject()));
-
               },
               child: Text("Previous Projects"),
             ),
@@ -191,7 +191,7 @@ class HomePag extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30.0),
                 ),
                 padding:
-                const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                 textStyle: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -201,11 +201,31 @@ class HomePag extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>MgmtPreviousProjects()));
+                        builder: (context) => MgmtPreviousProjects()));
               },
               child: const Text("Management Project View Page"),
             ),
-
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color.fromARGB(255, 50, 7, 120),
+                foregroundColor: Color.fromARGB(255, 242, 244, 244),
+                shadowColor: Colors.black12,
+                elevation: 5,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                textStyle: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Studentview()));
+              },
+              child: Text("Student View"),
+            ),
           ],
         ),
       ),
