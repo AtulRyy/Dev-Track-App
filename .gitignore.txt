@@ -1,0 +1,28 @@
+# Python bytecode
+*.pyc
+*.pyo
+*.pyd
+__pycache__
+
+# Django migrations
+*/migrations/*.py
+*/migrations/*.pyc
+
+# Database
+*.sqlite3
+
+# Django secret key
+*.env
+
+# Media files
+media/
+
+# Static files
+static/
+
+# Cache files
+*.cache
+
+# IDE-specific files
+.vscode/
+.idea/
