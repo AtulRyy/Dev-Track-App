@@ -8,6 +8,8 @@ from ninja_jwt.authentication import JWTAuth
 from ninja_jwt.tokens import RefreshToken
 from ninja_extra import NinjaExtraAPI, ControllerBase, api_controller, route 
 
+from projects.api import ProjectsAPI
+
 
 
 @api_controller("/user", tags="User Authentication", auth=JWTAuth())
@@ -80,6 +82,8 @@ class UserAuthAPI(ControllerBase):
 api = NinjaExtraAPI(csrf=False)
 api.register_controllers(NinjaJWTDefaultController)
 api.register_controllers(UserAuthAPI)
+api.register_controllers(ProjectsAPI)
+
 
 
 
