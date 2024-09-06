@@ -4,6 +4,11 @@ from django.db import models
 from pydantic import ValidationError
 
 
+from django.core.exceptions import ValidationError
+
+
+
+
 # Todo list 
 # - Manage passwords, search how to do that
 # - Reset password functionality
@@ -26,9 +31,6 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.email
 
-from django.db import models
-from django.core.exceptions import ValidationError
-from members.models import CustomUser
 
 class FileModel(models.Model):
     PDF = "PD"
