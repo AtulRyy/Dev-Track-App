@@ -15,6 +15,7 @@ class ListDomainSchema(Schema):
 
 
 class ListProjectSchema(Schema):
+    id : int
     name : str 
     domain : str
     created_at : str

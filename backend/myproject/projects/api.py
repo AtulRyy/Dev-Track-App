@@ -48,7 +48,7 @@ class ProjectsAPI(ControllerBase):
         response = self.project_service.create_project(payload,file)
         if 'error' in response:
             raise HttpError(400, response['error'])
-        return {"message": "Project created successfully", "project_id": response['project_id']}
+        return {"message": "Project created successfully", "project_id": response['data']['project_id']}
 
 
     #Api to list all the names of the projects. 
@@ -58,6 +58,7 @@ class ProjectsAPI(ControllerBase):
             projects = ProjectModel.objects.all()
             project_list = [
                 ListProjectSchema(
+                    id=project.id,
                     name=project.name,
                     domain=project.domain.name,
                     created_at=project.created_at.isoformat()
@@ -65,6 +66,18 @@ class ProjectsAPI(ControllerBase):
                 for project in projects
             ]
             return project_list
+        except Exception as e:
+            raise HttpError(400, str(e))
+        
+    #API call to delete a project. 
+    @route.delete("/delete/{project_id}", url_name="Delete project",)
+    def delete_project(self, project_id : int):
+        try:
+            to_delete = get_object_or_404(ProjectModel,id=project_id)
+            name_to_display = to_delete.name
+            to_delete.delete()
+            return {"message":f"{name_to_display} has successfully been deleted."}
+
         except Exception as e:
             raise HttpError(400, str(e))
 
