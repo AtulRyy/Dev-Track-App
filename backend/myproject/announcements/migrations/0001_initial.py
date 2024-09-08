@@ -15,14 +15,38 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='NotificationModel',
+            name="NotificationModel",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('message', models.CharField(max_length=200)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('is_read', models.BooleanField(default=False)),
-                ('notification_type', models.CharField(choices=[('EN', 'enrollment'), ('SC', 'scrum'), ('DE', 'deadline')], max_length=2)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("message", models.CharField(max_length=200)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("is_read", models.BooleanField(default=False)),
+                (
+                    "notification_type",
+                    models.CharField(
+                        choices=[
+                            ("EN", "enrollment"),
+                            ("SC", "scrum"),
+                            ("DE", "deadline"),
+                        ],
+                        max_length=2,
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]

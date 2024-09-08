@@ -1,22 +1,22 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        
-
         {
-            "name": "Python Debugger: Django",
+            "name": "Python: Django",
             "type": "debugpy",
             "request": "launch",
+            "program": "${workspaceFolder}/backend/myproject/manage.py",
             "args": [
                 "runserver",
                 "--noreload"
             ],
             "django": true,
-            "autoStartBrowser": false,
-            "program": "${workspaceFolder}\\manage.py"
+            "justMyCode": true,
+            "console": "integratedTerminal",  // Use integrated terminal (cmd) instead of external terminal (Ubuntu)
+            "env": {
+                "DJANGO_SETTINGS_MODULE": "myproject.settings" // Replace with your actual settings
+            },
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }

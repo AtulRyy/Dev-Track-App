@@ -10,22 +10,64 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('projects', '0001_initial'),
+        ("projects", "0001_initial"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='ProjectApplicationModel',
+            name="ProjectApplicationModel",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('application_date', models.DateTimeField(auto_now_add=True)),
-                ('is_selected', models.BooleanField()),
-                ('cycle', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='projects.projectcyclemodel')),
-                ('first_preference', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='first_pref', to='projects.domainmodel')),
-                ('second_preference', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='second_pref', to='projects.domainmodel')),
-                ('selected_team', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='projects.teammodel')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("application_date", models.DateTimeField(auto_now_add=True)),
+                ("is_selected", models.BooleanField()),
+                (
+                    "cycle",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="projects.projectcyclemodel",
+                    ),
+                ),
+                (
+                    "first_preference",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="first_pref",
+                        to="projects.domainmodel",
+                    ),
+                ),
+                (
+                    "second_preference",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="second_pref",
+                        to="projects.domainmodel",
+                    ),
+                ),
+                (
+                    "selected_team",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="projects.teammodel",
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]

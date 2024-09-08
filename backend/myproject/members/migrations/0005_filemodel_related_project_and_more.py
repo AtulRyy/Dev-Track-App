@@ -8,29 +8,51 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('members', '0004_filemodel_alter_customuser_email_and_more'),
-        ('projects', '0001_initial'),
+        ("members", "0004_filemodel_alter_customuser_email_and_more"),
+        ("projects", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='filemodel',
-            name='related_project',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='projects.projectmodel'),
+            model_name="filemodel",
+            name="related_project",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="projects.projectmodel",
+            ),
         ),
         migrations.AddField(
-            model_name='filemodel',
-            name='related_submission',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='projects.submissionmodel'),
+            model_name="filemodel",
+            name="related_submission",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="projects.submissionmodel",
+            ),
         ),
         migrations.AddField(
-            model_name='filemodel',
-            name='related_user',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='related_files', to=settings.AUTH_USER_MODEL),
+            model_name="filemodel",
+            name="related_user",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="related_files",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
         migrations.AddField(
-            model_name='filemodel',
-            name='uploaded_by',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='uploaded_files', to=settings.AUTH_USER_MODEL),
+            model_name="filemodel",
+            name="uploaded_by",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="uploaded_files",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]

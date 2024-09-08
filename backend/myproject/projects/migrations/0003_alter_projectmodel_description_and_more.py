@@ -6,18 +6,20 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('projects', '0002_alter_projectmodel_description_and_more'),
+        ("projects", "0002_alter_projectmodel_description_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='projectmodel',
-            name='description',
+            model_name="projectmodel",
+            name="description",
             field=models.TextField(max_length=256),
         ),
         migrations.AlterField(
-            model_name='projectmodel',
-            name='status',
-            field=models.CharField(choices=[('ON', 'ongoing'), ('PA', 'past')], max_length=100),
+            model_name="projectmodel",
+            name="status",
+            field=models.CharField(
+                choices=[("ON", "ongoing"), ("PA", "past")], max_length=100
+            ),
         ),
     ]

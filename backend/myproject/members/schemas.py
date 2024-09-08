@@ -4,7 +4,6 @@ from pydantic import BaseModel
 from ninja import Schema
 
 
-
 class SignInSchema(BaseModel):
     email: str
     password: str
@@ -12,11 +11,11 @@ class SignInSchema(BaseModel):
 
 class RegisterSchema(ModelSchema):
     class Meta:
-        model= CustomUser
+        model = CustomUser
         fields = [
-            'email',
-            'first_name',
-            'last_name',
-            'password',
-            'srn',
+            "email",
+            "first_name",
+            "last_name",
+            "password",
+            "srn",
         ]

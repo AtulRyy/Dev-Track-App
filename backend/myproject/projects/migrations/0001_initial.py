@@ -10,80 +10,206 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('members', '0004_filemodel_alter_customuser_email_and_more'),
+        ("members", "0004_filemodel_alter_customuser_email_and_more"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='DomainModel',
+            name="DomainModel",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100, unique=True)),
-                ('description', models.TextField(max_length=256)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100, unique=True)),
+                ("description", models.TextField(max_length=256)),
             ],
         ),
         migrations.CreateModel(
-            name='ProjectCycleModel',
+            name="ProjectCycleModel",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('cycle_name', models.CharField(max_length=256)),
-                ('start_date', models.DateTimeField()),
-                ('end_date', models.DateTimeField()),
-                ('is_active', models.BooleanField()),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("cycle_name", models.CharField(max_length=256)),
+                ("start_date", models.DateTimeField()),
+                ("end_date", models.DateTimeField()),
+                ("is_active", models.BooleanField()),
             ],
         ),
         migrations.CreateModel(
-            name='ProjectModel',
+            name="ProjectModel",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=64)),
-                ('description', models.TextField(max_length=256)),
-                ('github_link', models.URLField(blank=True, null=True)),
-                ('youtube_link', models.URLField(blank=True, null=True)),
-                ('status', models.CharField(choices=[('ON', 'ongoing'), ('PA', 'past')], max_length=100)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('domain', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='projects.domainmodel')),
-                ('pdf_report', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='members.filemodel')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=64)),
+                ("description", models.TextField(max_length=256)),
+                ("github_link", models.URLField(blank=True, null=True)),
+                ("youtube_link", models.URLField(blank=True, null=True)),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[("ON", "ongoing"), ("PA", "past")], max_length=100
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                (
+                    "domain",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="projects.domainmodel",
+                    ),
+                ),
+                (
+                    "pdf_report",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="members.filemodel",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='ScrumModel',
+            name="ScrumModel",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('meeting_link', models.URLField(max_length=500)),
-                ('scheduled_time', models.DateField()),
-                ('domain', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='projects.domainmodel')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("meeting_link", models.URLField(max_length=500)),
+                ("scheduled_time", models.DateField()),
+                (
+                    "domain",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="projects.domainmodel",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='TeamModel',
+            name="TeamModel",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=50)),
-                ('members', models.ManyToManyField(to=settings.AUTH_USER_MODEL)),
-                ('team_lead', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='team_lead', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=50)),
+                ("members", models.ManyToManyField(to=settings.AUTH_USER_MODEL)),
+                (
+                    "team_lead",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="team_lead",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='TeamMembership',
+            name="TeamMembership",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('joined_at', models.DateTimeField(auto_now_add=True)),
-                ('project', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='projects.projectmodel')),
-                ('team', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='projects.teammodel')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("joined_at", models.DateTimeField(auto_now_add=True)),
+                (
+                    "project",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="projects.projectmodel",
+                    ),
+                ),
+                (
+                    "team",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="projects.teammodel",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='SubmissionModel',
+            name="SubmissionModel",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('github_link', models.URLField()),
-                ('submitted_at', models.DateTimeField(auto_now_add=True)),
-                ('project', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='projects.projectmodel')),
-                ('report_file', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='members.filemodel')),
-                ('submitted_by', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-                ('team', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='projects.teammodel')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("github_link", models.URLField()),
+                ("submitted_at", models.DateTimeField(auto_now_add=True)),
+                (
+                    "project",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="projects.projectmodel",
+                    ),
+                ),
+                (
+                    "report_file",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="members.filemodel",
+                    ),
+                ),
+                (
+                    "submitted_by",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "team",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="projects.teammodel",
+                    ),
+                ),
             ],
         ),
     ]
