@@ -7,9 +7,10 @@ from members.models import CustomUser
 
 class AnnouncementModel:
     title = models.CharField(max_length=100, blank=False, null=False)
-    description = models.TextField(max_length=512, blank=True)
+    description = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    #TODO add an updated_at field
 
 
 class NotificationModel(models.Model):

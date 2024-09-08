@@ -122,3 +122,4 @@ class DomainService:
             return {"Success": "domain has been created"}
         except Exception as e:
             return {"error": str(e)}
+
