@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'package:dev_track_app/pages/home.dart';
+import 'package:dev_track_app/pages/home.dart'; // Import your HomePage here
+import 'package:dev_track_app/pages/splashscreen.dart'; // Import your Splash screen here
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
       ),
       debugShowCheckedModeBanner: false,
-      home: const HomePag(),
+      home: const Splash(), // Set the initial home to the Splash screen
     );
   }
 }
