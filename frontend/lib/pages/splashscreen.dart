@@ -1,4 +1,4 @@
-import 'package:dev_track_app/pages/home.dart';
+import 'package:dev_track_app/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 class Splash extends StatefulWidget {
@@ -25,14 +25,16 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
       end: Alignment.bottomRight,
     ).animate(_controller);
 
-    _navigateToHome();
+    _navigateToHome(); // Trigger the navigation to HomePage after the animation
   }
 
   Future<void> _navigateToHome() async {
-    await Future.delayed(Duration(milliseconds: 2000));
+    await Future.delayed(Duration(milliseconds: 2000)); // Wait for 2 seconds
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => HomePag()),
+      MaterialPageRoute(
+          builder: (context) =>
+              const HomePage()), // Corrected navigation to HomePage
     );
   }
 
@@ -62,8 +64,8 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
             ),
             child: Center(
               child: SizedBox(
-                width: 320, // Set the desired width
-                height: 320, // Set the desired height
+                width: 320,
+                height: 320,
                 child: Image.asset('assets/images/dtlogo.png'),
               ),
             ),
